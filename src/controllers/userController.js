@@ -36,7 +36,7 @@ const followOrUnfollowUserController = async (req, res) => {
         await userToFollow.save();
         await curUser.save();
 
-        return res.send(success(200, {user: userToFollow}))
+        return res.send(success(200, { user: userToFollow }))
     } catch (e) {
         console.log(e);
         return res.send(error(500, e.message));
@@ -57,7 +57,7 @@ const getPostsOfFollowing = async (req, res) => {
         const posts = fullPosts
             .map((item) => mapPostOutput(item, req._id))
             .reverse();
-        
+
         const followingsIds = curUser.followings.map((item) => item._id);
         followingsIds.push(req._id);
 
@@ -67,12 +67,13 @@ const getPostsOfFollowing = async (req, res) => {
             },
         });
 
-        return res.send(success(200, {...curUser._doc, suggestions, posts}));
+        return res.send(success(200, { ...curUser._doc, suggestions, posts }));
     } catch (error) {
         console.log(e);
         return res.send(error(500, e.message));
     }
 };
+
 
 const getMyPosts = async (req, res) => {
     try {

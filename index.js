@@ -4,6 +4,7 @@ const connect = require('./src/config/databaseConfig')
 const authRouter = require('./src/routes/authRouter')
 const postRouter = require('./src/routes/postsRouter');
 const userToFollow = require('./src/routes/userRouter');
+const commentRouter = require('./src/routes/commentsRouter')
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const cloudinary = require("cloudinary").v2;
@@ -27,6 +28,7 @@ app.use(cors({
 app.use('/auth',authRouter);
 app.use('/posts', postRouter);
 app.use('/user', userToFollow);
+app.use('/comments', commentRouter)
 
 app.listen(Port, async() =>{
     console.log(`Server started at ${Port}`);

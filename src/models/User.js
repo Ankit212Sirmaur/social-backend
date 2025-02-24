@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const comment = require("./comment");
 
 const userSchema = mongoose.Schema({
     email: {
@@ -40,7 +41,8 @@ const userSchema = mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'post'
         }
-    ]
+    ],
+
 }, {
     timestamps: true
 });
